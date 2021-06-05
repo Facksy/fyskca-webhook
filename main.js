@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
         console.log('A chunk of data has arrived: ', chunk);
     });
     console.log('received a request');
-}).listen(5545, '172.18.192.138', () => {  // 172.18.192.138 192.168.0.14
+}).listen(0, '172.18.192.138', () => {  // 172.18.192.138 192.168.0.14
     console.log('Listening on port ' + server.address().port);
 });
 
