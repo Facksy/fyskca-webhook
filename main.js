@@ -1,5 +1,4 @@
-/*const http = require('http')
-const port = 8000;
+const http = require('http')
 
 const server = http.createServer((req, res) => {
     res.setHeader("Content-Type", "application/json");
@@ -8,11 +7,13 @@ const server = http.createServer((req, res) => {
         console.log('A chunk of data has arrived: ', chunk);
     });
     console.log('received a request');
-}).listen(5545, '192.168.0.14');
+}).listen(5545, '172.18.192.138', () => {  // 172.18.192.138 192.168.0.14
+    console.log('Listening on port ' + server.address().port);
+});
 
 console.log('ready!');
 
-
+/*
 const data = JSON.stringify({
   todo: 'Buy the milk'
 })
@@ -29,22 +30,5 @@ const options = {
 
 const req = http.request(options)
 req.write(data)
-req.end()*/
-
-const { networkInterfaces } = require('os');
-
-const nets = networkInterfaces();
-const results = Object.create(null); // Or just '{}', an empty object
-
-for (const name of Object.keys(nets)) {
-    for (const net of nets[name]) {
-        // Skip over non-IPv4 and internal (i.e. 127.0.0.1) addresses
-        if (net.family === 'IPv4' && !net.internal) {
-            if (!results[name]) {
-                results[name] = [];
-            }
-            results[name].push(net.address);
-        }
-    }
-}
-console.log(results);
+req.end()
+*/
