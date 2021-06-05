@@ -10,6 +10,8 @@ const server = http.createServer((req, res) => {
 }).listen(8000);
 
 console.log('ready!');
+
+console.log(server.address());
 /*
 
 const data = JSON.stringify({
