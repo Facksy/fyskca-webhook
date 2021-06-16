@@ -37,7 +37,7 @@ const requestListener = function (req, res) {
 };
 
 const server = http.createServer(requestListener);
-server.listen(port, '192.168.0.14', () => {
+server.listen(port, ip, () => {
     console.log('Server is running on ', server.address());
 });
 
