@@ -45,7 +45,7 @@ server.listen(port, ip, () => {
 const https = require('https');
 
 let options = {
-    hostname: 'api.myip.com',
+    hostname: 'api.my-ip.io',
     path: '/',
     method: 'GET'
 }
@@ -53,20 +53,6 @@ let options = {
 let req = https.request(options, res => {
     res.on('data', data => {
         console.log('data ' + data);
-    })
-})
-req.end()
-
-
-options = {
-    hostname: 'api.my-ip.io',
-    path: '/ip.json',
-    method: 'GET'
-}
-
-req = https.request(options, res => {
-    res.on('data', data => {
-        console.log('data2 ' + data);
     })
 })
 req.end()
