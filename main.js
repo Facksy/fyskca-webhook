@@ -15,7 +15,7 @@ for (const name of Object.keys(nets)) {
     }
 }
 console.log(results);
-let ip = results[eth0][0]
+let ip = results['eth0'][0]
 
 
 const http = require("http");
