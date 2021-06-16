@@ -1,6 +1,25 @@
+const { networkInterfaces } = require('os');
+
+const nets = networkInterfaces();
+const results = Object.create(null); // Or just '{}', an empty object
+
+for (const name of Object.keys(nets)) {
+    for (const net of nets[name]) {
+        // Skip over non-IPv4 and internal (i.e. 127.0.0.1) addresses
+        if (net.family === 'IPv4' && !net.internal) {
+            if (!results[name]) {
+                results[name] = [];
+            }
+            results[name].push(net.address);
+        }
+    }
+}
+console.log(results);
+let ip = results['Wi-Fi'][0]
+
+
 const http = require("http");
 
-const host = 'localhost';
 const port = 5545;
 
 const requestListener = function (req, res) {
@@ -18,6 +37,6 @@ const requestListener = function (req, res) {
 };
 
 const server = http.createServer(requestListener);
-server.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
+server.listen(port, ip, () => {
+    console.log('Server is running on ', server.address());
 });
