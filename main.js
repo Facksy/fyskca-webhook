@@ -1,5 +1,5 @@
 const { networkInterfaces } = require('os');
-
+return
 const nets = networkInterfaces();
 const results = Object.create(null); // Or just '{}', an empty object
 
@@ -15,8 +15,12 @@ for (const name of Object.keys(nets)) {
     }
 }
 console.log(results);
-let ip = results['eth0'][0]
-
+let ip = 0
+if(results['eth0'])
+    ip = results['eth0'][0]
+else{
+    ip = results['Wi-Fi'][0]
+}
 
 const http = require("http");
 
