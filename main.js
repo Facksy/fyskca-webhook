@@ -1,9 +1,11 @@
-const http = require('http');
+const http = require("http");
 
-const requestListener = (req, res) => {
-    res.writeHead(200);
-    res.end('Hello, World!');
-}
+const host = 'localhost';
+const port = 8000;
+
+const requestListener = function (req, res) {};
 
 const server = http.createServer(requestListener);
-server.listen(80);
+server.listen(port, host, () => {
+    console.log(`Server is running on http://${host}:${port}`);
+});
