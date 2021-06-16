@@ -37,6 +37,22 @@ const requestListener = function (req, res) {
 };
 
 const server = http.createServer(requestListener);
-server.listen(port, ip, () => {
+server.listen(port, '192.168.0.14', () => {
     console.log('Server is running on ', server.address());
 });
+
+
+const https = require('https');
+
+let options = {
+    hostname: 'api.myip.com',
+    path: '/',
+    method: 'GET'
+}
+
+let req = https.request(options, res => {
+    res.on('data', data => {
+        console.log(data+'');
+    })
+})
+req.end()

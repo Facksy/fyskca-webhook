@@ -1,6 +1,6 @@
 
 <?php
-$url = 'http://localhost:5545';
+$url = 'http://172.18.252.58:5545';
 $data = array('key1' => 'value1', 'key2' => 'value2');
 
 // use key 'http' even if you send the request to https://...
