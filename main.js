@@ -37,5 +37,5 @@ const server = http.createServer((req, res) => {
         res.end('test');
     }
 })
-server.listen(80)
+server.listen(process.env.PORT)
 console.log('runing');
